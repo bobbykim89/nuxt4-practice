@@ -1,0 +1,23 @@
+type Query {
+  post(id: ID!): Post
+  allPost(sort: SortOption): [Post]
+}
+
+enum OrderType {
+  ASC
+  DESC
+}
+
+input SortOption {
+  by: String
+  order: OrderType
+  limit: Int
+}
+
+type Post {
+  _id: ID!
+  content: String
+  imageId: String!
+  date: String!
+  updatedAt: String!
+}
