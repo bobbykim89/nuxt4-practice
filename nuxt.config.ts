@@ -19,6 +19,11 @@ export default defineNuxtConfig({
   runtimeConfig: {
     manguitoPageUrl: process.env.MANGUITO_PAGE_URL,
   },
+  image: {
+    cloudinary: {
+      baseURL: process.env.CLOUDINARY_URL,
+    },
+  },
   typescript: {
     typeCheck: true,
     strict: true,
