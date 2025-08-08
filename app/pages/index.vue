@@ -36,7 +36,7 @@
             <li>🧡 Made with love and millet.</li>
           </ul>
           <div class="flex justify-center">
-            <NuxtLink to="/main" class="btn btn-primary btn-progress btn-round">
+            <NuxtLink to="/post" class="btn btn-primary btn-progress btn-round">
               <span>Go see Pollo!</span>
             </NuxtLink>
           </div>

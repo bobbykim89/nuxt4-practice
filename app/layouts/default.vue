@@ -7,7 +7,7 @@ const router = useRouter()
 const titleText: string = 'Royal <span class="text-primary">Pollo</span>'
 const MenuItems: MenuItemType[] = [
   { title: 'Home', url: '/', target: '_self' },
-  { title: 'Main', url: '/main', target: '_self' },
+  { title: 'Post', url: '/post', target: '_self' },
   { title: 'About', url: '/about', target: '_self' },
 ]
 const currentYear = ref<number>()
