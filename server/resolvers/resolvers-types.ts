@@ -21,6 +21,11 @@ export enum OrderType {
   Desc = 'DESC'
 }
 
+export type PaginationInput = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
 export type Post = {
   __typename?: 'Post';
   _id: Scalars['ID']['output'];
@@ -30,14 +35,30 @@ export type Post = {
   updatedAt: Scalars['String']['output'];
 };
 
+export type PostConnection = {
+  __typename?: 'PostConnection';
+  hasMore: Scalars['Boolean']['output'];
+  nextOffset?: Maybe<Scalars['Int']['output']>;
+  posts: Array<Post>;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type PostWithNavigation = {
+  __typename?: 'PostWithNavigation';
+  nextPost?: Maybe<Post>;
+  post?: Maybe<Post>;
+  previousPost?: Maybe<Post>;
+};
+
 export type Query = {
   __typename?: 'Query';
-  allPost?: Maybe<Array<Maybe<Post>>>;
-  post?: Maybe<Post>;
+  allPost?: Maybe<PostConnection>;
+  post?: Maybe<PostWithNavigation>;
 };
 
 
 export type QueryAllPostArgs = {
+  pagination?: InputMaybe<PaginationInput>;
   sort?: InputMaybe<SortOption>;
 };
 
@@ -127,7 +148,10 @@ export type ResolversTypes = {
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
   OrderType: OrderType;
+  PaginationInput: PaginationInput;
   Post: ResolverTypeWrapper<Post>;
+  PostConnection: ResolverTypeWrapper<PostConnection>;
+  PostWithNavigation: ResolverTypeWrapper<PostWithNavigation>;
   Query: ResolverTypeWrapper<{}>;
   SortOption: SortOption;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
@@ -138,7 +162,10 @@ export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
   ID: Scalars['ID']['output'];
   Int: Scalars['Int']['output'];
+  PaginationInput: PaginationInput;
   Post: Post;
+  PostConnection: PostConnection;
+  PostWithNavigation: PostWithNavigation;
   Query: {};
   SortOption: SortOption;
   String: Scalars['String']['output'];
@@ -153,13 +180,30 @@ export type PostResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type PostConnectionResolvers<ContextType = any, ParentType extends ResolversParentTypes['PostConnection'] = ResolversParentTypes['PostConnection']> = {
+  hasMore?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  nextOffset?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  posts?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
+  totalCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type PostWithNavigationResolvers<ContextType = any, ParentType extends ResolversParentTypes['PostWithNavigation'] = ResolversParentTypes['PostWithNavigation']> = {
+  nextPost?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType>;
+  post?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType>;
+  previousPost?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  allPost?: Resolver<Maybe<Array<Maybe<ResolversTypes['Post']>>>, ParentType, ContextType, Partial<QueryAllPostArgs>>;
-  post?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryPostArgs, 'id'>>;
+  allPost?: Resolver<Maybe<ResolversTypes['PostConnection']>, ParentType, ContextType, Partial<QueryAllPostArgs>>;
+  post?: Resolver<Maybe<ResolversTypes['PostWithNavigation']>, ParentType, ContextType, RequireFields<QueryPostArgs, 'id'>>;
 };
 
 export type Resolvers<ContextType = any> = {
   Post?: PostResolvers<ContextType>;
+  PostConnection?: PostConnectionResolvers<ContextType>;
+  PostWithNavigation?: PostWithNavigationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
 
