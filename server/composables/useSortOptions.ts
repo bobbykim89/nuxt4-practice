@@ -7,10 +7,11 @@ export const useSortOptions = <T extends Record<string, unknown>>(
 ) => {
   // Return as-is if sort is null or undefined
   if (!sort) return data
-  const { by, order, limit } = sort
+  const { by, order } = sort
   // If no field to sort by, return early
   if (!by) {
-    return limit ? data.slice(0, limit) : data
+    // return limit ? data.slice(0, limit) : data
+    return data
   }
   // Create a shallow copy to avoid mutating original data
   const sorted = data.sort((a, b) => {
@@ -36,5 +37,6 @@ export const useSortOptions = <T extends Record<string, unknown>>(
     return 0
   })
 
-  return limit ? sorted.slice(0, limit) : sorted
+  // return limit ? sorted.slice(0, limit) : sorted
+  return sorted
 }
