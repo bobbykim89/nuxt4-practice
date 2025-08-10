@@ -2,7 +2,7 @@ import type { UseFetchOptions } from '#app'
 
 type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] }
 interface PageQueryVariableOptions {
-  [key: string]: string | PageQueryVariableOptions
+  [key: string]: string | number | PageQueryVariableOptions
 }
 interface UsePageQueryReturn<T> {
   data: T

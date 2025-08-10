@@ -18,23 +18,24 @@ export const post = async (
   // const selectedPost = res.find((post) => post._id === id)
   // if (!selectedPost) return null
   // return selectedPost
-  const allPosts = await $fetch<Post[]>(`${config.manguitoPageUrl}/api/post`)
-  const sortedPosts = allPosts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  )
-  const currentIndex = sortedPosts.findIndex((post) => post._id === id)
+  const res = await $fetch<Post[]>(`${config.manguitoPageUrl}/api/post`)
+  // const sortedPosts = allPosts.sort(
+  //   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  // )
+  const currentIndex = res.findIndex((post) => post._id === id)
 
-  if (currentIndex - 1) {
+  console.log(currentIndex)
+
+  if (currentIndex === -1) {
     return {
       post: null,
       previousPost: null,
       nextPost: null,
     }
   }
-  const currentPost = sortedPosts[currentIndex]
-  const previousPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null
-  const nextPost =
-    currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null
+  const currentPost = res[currentIndex]
+  const previousPost = currentIndex > 0 ? res[currentIndex - 1] : null
+  const nextPost = currentIndex < res.length - 1 ? res[currentIndex + 1] : null
 
   return {
     post: currentPost,
