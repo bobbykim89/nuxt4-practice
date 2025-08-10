@@ -24,8 +24,6 @@ export const post = async (
   // )
   const currentIndex = res.findIndex((post) => post._id === id)
 
-  console.log(currentIndex)
-
   if (currentIndex === -1) {
     return {
       post: null,
@@ -34,8 +32,10 @@ export const post = async (
     }
   }
   const currentPost = res[currentIndex]
-  const previousPost = currentIndex > 0 ? res[currentIndex - 1] : null
-  const nextPost = currentIndex < res.length - 1 ? res[currentIndex + 1] : null
+  const previousPost =
+    currentIndex > 0 ? res[currentIndex - 1] : res[res.length - 1]
+  const nextPost =
+    currentIndex < res.length - 1 ? res[currentIndex + 1] : res[0]
 
   return {
     post: currentPost,
