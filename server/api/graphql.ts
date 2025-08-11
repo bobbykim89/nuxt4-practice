@@ -3,9 +3,16 @@ import { startServerAndCreateH3Handler } from '@as-integrations/h3'
 import { readFileSync } from 'fs'
 import { query } from '../resolvers'
 
-const typeDefs = readFileSync(`${process.cwd()}/server/schema.graphql`, {
-  encoding: 'utf-8',
-})
+let typeDefs: string
+if (process.env.NODE_ENV === 'development') {
+  typeDefs = readFileSync(`${process.cwd()}/server/public/schema.graphql`, {
+    encoding: 'utf-8',
+  })
+} else {
+  typeDefs = readFileSync(`${process.cwd()}/public/schema.graphql`, {
+    encoding: 'utf-8',
+  })
+}
 
 const resolvers = {
   Query: query,
