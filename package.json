@@ -3,9 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "tsx ./scripts/index.ts && graphql-codegen --config ./graphql-codegen.ts",
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "write:schema": "graphql-codegen --config ./graphql-codegen.ts",
+    "write:schema": "tsx ./scripts/index.ts",
+    "write:codegen": "graphql-codegen --config ./graphql-codegen.ts",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -37,6 +39,7 @@
     "postcss": "^8.5.6",
     "sass": "^1.90.0",
     "tailwindcss": "^4.1.11",
+    "tsx": "^4.20.3",
     "typescript": "^5.9.2",
     "vite": "^7.0.6",
     "vue-tsc": "^3.0.5"
