@@ -1,9 +1,25 @@
 <script setup lang="ts">
+import { useRequestURL } from '#app'
 import { useFormatDate, useGraphqlQuery } from '@/composables'
 import type {
   Post,
   PostConnection,
 } from '../../../server/resolvers/resolvers-types'
+
+const url = useRequestURL()
+useHead({
+  title: 'Post | Royal Pollo',
+  meta: [
+    { property: 'og:title', content: 'Post | Royal Pollo' },
+    { property: 'og:url', content: url.href },
+    { property: 'twitter:domain', content: url.host },
+    { property: 'twitter:url', content: url.href },
+    {
+      name: 'twitter:title',
+      content: 'Post | Royal Pollo',
+    },
+  ],
+})
 
 // const offsetRef = ref<number>(0)
 const posts = ref<Post[]>([])
