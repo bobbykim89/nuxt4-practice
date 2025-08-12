@@ -218,6 +218,7 @@ const formatImgUrl = (id: string) => {
       </NuxtLink>
     </div>
     <button
+      v-if="hasMore"
       class="btn btn-primary btn-full mt-3xs btn-no-ring"
       @click="loadMorePosts"
     >
