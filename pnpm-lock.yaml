@@ -15,11 +15,11 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(@apollo/server@5.0.0(graphql@16.11.0))(crossws@0.3.5)(graphql-ws@6.0.6(crossws@0.3.5)(graphql@16.11.0)(ws@8.18.3))(graphql@16.11.0)(h3@1.15.4)
       '@bobbykim/manguito-theme':
-        specifier: ^0.26.0
-        version: 0.26.0(typescript@5.9.2)
+        specifier: ^0.27.0
+        version: 0.27.0(typescript@5.9.2)
       '@bobbykim/mcl-footer':
-        specifier: ^0.9.4
-        version: 0.9.4(typescript@5.9.2)
+        specifier: ^0.9.5
+        version: 0.9.5(typescript@5.9.2)
       '@nuxt/content':
         specifier: 3.6.3
         version: 3.6.3(better-sqlite3@12.2.0)(magicast@0.3.5)(vue-component-type-helpers@3.0.1)
@@ -345,11 +345,11 @@ packages:
     resolution: {integrity: sha512-ruv7Ae4J5dUYULmeXw1gmb7rYRz57OWCPM57pHojnLq/3Z1CK2lNSLTCVjxVk1F/TZHwOZZrOWi0ur95BbLxNQ==}
     engines: {node: '>=6.9.0'}
 
-  '@bobbykim/manguito-theme@0.26.0':
-    resolution: {integrity: sha512-CZqnd/yp0Wy2zd76qOO9KDn9k8ni5VWiVuNjUOtaqwebEOek5FvAf/ErUaNuGNnAPiTi/vvQttH4IhQ4a91X+w==}
+  '@bobbykim/manguito-theme@0.27.0':
+    resolution: {integrity: sha512-HWukKcRblYWxJdxmsTJ3c52HnRzq0N6zapkK843dT5m7mULiBpsBOQqeTX2i9+x1aOooNbBY7Vvd6+KhB/4++A==}
 
-  '@bobbykim/mcl-footer@0.9.4':
-    resolution: {integrity: sha512-o+RaPaAXpM8WQNbzWgrO0qgBGYq1cG5RoDbr0dEksw3gpcJpkXd83XkcbMKKQ9HcEQOVGr3FpROa3j6ArSArOQ==}
+  '@bobbykim/mcl-footer@0.9.5':
+    resolution: {integrity: sha512-Ui7zgOUKpRLN4Kk5MQ73kjQnuUKUMZjHSiGbkvQ9pJPdQ8QxAiIFZQsVgY33Q+bsyMNfc8RodadAbMfUua+6Qw==}
 
   '@clack/core@0.5.0':
     resolution: {integrity: sha512-p3y0FIOwaYRUPRcMO7+dlmLh8PSRcrjuTndsiA0WAFbWES0mLZlrjVoBRZ9DzkPFJZG6KGkJmoEAY0ZcVWTkow==}
@@ -6944,16 +6944,16 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@bobbykim/manguito-theme@0.26.0(typescript@5.9.2)':
+  '@bobbykim/manguito-theme@0.27.0(typescript@5.9.2)':
     dependencies:
       '@vueuse/core': 12.8.2(typescript@5.9.2)
       vue: 3.5.18(typescript@5.9.2)
     transitivePeerDependencies:
       - typescript
 
-  '@bobbykim/mcl-footer@0.9.4(typescript@5.9.2)':
+  '@bobbykim/mcl-footer@0.9.5(typescript@5.9.2)':
     dependencies:
-      '@bobbykim/manguito-theme': 0.26.0(typescript@5.9.2)
+      '@bobbykim/manguito-theme': 0.27.0(typescript@5.9.2)
       vue: 3.5.18(typescript@5.9.2)
     transitivePeerDependencies:
       - typescript
