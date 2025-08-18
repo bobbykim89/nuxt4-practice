@@ -1,12 +1,12 @@
 import { useRuntimeConfig } from '#imports'
-import { useSortOptions } from '../../composables'
 import type {
   Post,
   PostConnection,
   PostWithNavigation,
   QueryAllPostArgs,
   QueryPostArgs,
-} from '../resolvers-types'
+} from '#shared/graphql/resolvers-types'
+import { useSortOptions } from '../../composables'
 
 const config = useRuntimeConfig()
 
@@ -14,14 +14,7 @@ export const post = async (
   _: unknown,
   { id }: QueryPostArgs,
 ): Promise<PostWithNavigation> => {
-  // const res = await $fetch<Post[]>(`${config.manguitoPageUrl}/api/post`)
-  // const selectedPost = res.find((post) => post._id === id)
-  // if (!selectedPost) return null
-  // return selectedPost
   const res = await $fetch<Post[]>(`${config.manguitoPageUrl}/api/post`)
-  // const sortedPosts = allPosts.sort(
-  //   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  // )
   const currentIndex = res.findIndex((post) => post._id === id)
 
   if (currentIndex === -1) {

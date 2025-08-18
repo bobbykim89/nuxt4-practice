@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { useRequestURL } from '#app'
+import type { Post, PostConnection } from '#shared/graphql/resolvers-types'
 import { useFormatDate, useGraphqlQuery } from '@/composables'
-import type {
-  Post,
-  PostConnection,
-} from '../../../server/resolvers/resolvers-types'
 
 const url = useRequestURL()
 useHead({
@@ -21,9 +18,7 @@ useHead({
   ],
 })
 
-// const offsetRef = ref<number>(0)
 const posts = ref<Post[]>([])
-// const loading = ref<boolean>(false)
 const hasMore = ref<boolean>(true)
 const nextOffset = ref<number>(0)
 const totalCount = ref<number>(0)
@@ -49,35 +44,6 @@ const GET_POSTS_QUERY = `#graphql
     }
   }
 `
-
-// const res = await useGraphqlQuery<AllPost>(
-//   `#graphql
-//   query AllPost($pagination: PaginationInput) {
-//     allPost(sort:  {
-//       by: "date",
-//       order: DESC
-//     }, pagination: $pagination) {
-//       posts {
-//       _id
-//       content
-//       imageId
-//       date
-//       updatedAt
-//       }
-//       totalCount
-//       hasMore
-//       nextOffset
-//     }
-//   }
-// `,
-//   {
-//     pagination: {
-//       limit: 30,
-//       offset: offsetRef.value,
-//     },
-//   },
-//   { key: 'all-posts' },
-// )
 
 const { data: initialData } = await useAsyncData('initial-posts', async () => {
   try {

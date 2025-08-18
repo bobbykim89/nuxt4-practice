@@ -1,5 +1,5 @@
-import type { InputMaybe, SortOption } from '../resolvers/resolvers-types'
-import { OrderType } from '../resolvers/resolvers-types'
+import type { InputMaybe, SortOption } from '#shared/graphql/resolvers-types'
+import { OrderType } from '#shared/graphql/resolvers-types'
 
 export const useSortOptions = <T extends Record<string, unknown>>(
   data: Array<T>,
