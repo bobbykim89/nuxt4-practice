@@ -1,5 +1,5 @@
+import type { QueryResolvers } from '#shared/graphql/resolvers-types'
 import { allPost, post } from './posts'
-import type { QueryResolvers } from './resolvers-types'
 
 export const query: QueryResolvers = {
   allPost,

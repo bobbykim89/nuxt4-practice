@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRequestURL } from '#app'
+import type { PostWithNavigation } from '#shared/graphql/resolvers-types'
 import { useFormatDate, useGraphqlQuery } from '@/composables'
-import type { PostWithNavigation } from '../../../server/resolvers/resolvers-types'
 
 const url = useRequestURL()
 useHead({
